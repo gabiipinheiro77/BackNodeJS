@@ -1,4 +1,3 @@
-import { where } from 'sequelize';
 import cliente from '../model/cliente.js';
 
 class RepositoryCliente {
@@ -46,7 +45,7 @@ class RepositoryCliente {
     }
 
     async FindByEmail(email) {
-        return usuario.findOne({ where: {email}})
+        return cliente.findOne({ where: {email}})
     }
     
 }

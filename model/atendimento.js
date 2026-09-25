@@ -1,5 +1,5 @@
 import database from "../config/database.js";
-
+//id,dia,hora,valor,concluido
 class Atendimento {
     constructor() {
         this.model = database.db.define("atendimentos", {
@@ -8,13 +8,16 @@ class Atendimento {
                 primaryKey : true,
                 autoIncrement: true
             },
-            nome: { 
-                type: database.db.Sequelize.STRING,
+            dia: { 
+                type: database.db.Sequelize.INTEGER,
             },
-            email : { 
-                type: database.db.Sequelize.STRING,
+            hora : { 
+                type: database.db.Sequelize.INTEGER,
             },
-            senha: { 
+            valor: { 
+                type: database.db.Sequelize.INTEGER,
+            },
+            concluido: { 
                 type: database.db.Sequelize.STRING,
             }
         })

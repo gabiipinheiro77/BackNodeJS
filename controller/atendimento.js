@@ -9,11 +9,11 @@ class ControllerAtendimento {
             await ServiceAtendimento.Criar(dia,hora,valor,concluido)
 
             res.status(201).send({
-                message:"Cadastrado com sucesso"
+                mensagem:"Cadastrado com sucesso"
             })
         } catch (error) {
             res.status(500).send({
-                message: error.message
+                mensagem: error.message
             })
         }
 
@@ -23,10 +23,10 @@ class ControllerAtendimento {
         try{
             const atendimentos = await ServiceAtendimento.Buscar()
             res.status(200).send({
-                message: atendimentos })
+                mensagem: atendimentos })
         } catch (error) {
             res.status(500).send({
-                message: error.message
+                mensagem: error.message
             })
         }
     }
@@ -38,11 +38,11 @@ class ControllerAtendimento {
             const atendimento = await ServiceAtendimento.Detalhe(id)
 
             res.status(200).send({
-                message:atendimento
+                mensagem:atendimento
             })
         } catch(error) {
             res.status(500).send({
-                message: error.message
+                mensagem: error.message
             })
         }
     }
@@ -54,10 +54,10 @@ class ControllerAtendimento {
 
             await ServiceAtendimento.Alterar(id, dia,hora,valor,concluido)
 
-            res.status(201).send({message:"Alterado com sucesso"})
+            res.status(201).send({mensagem:"Alterado com sucesso"})
         }catch (error) {
             res.status(500).send({
-                message:error.message
+                mensagem:error.message
             })
         }
 
@@ -70,14 +70,17 @@ class ControllerAtendimento {
             await ServiceAtendimento.Deletar( identificador)
 
             res.status(204).send({
-                message :"Deletado"})
+                mensagem :"Deletado"})
         } catch (error) {
             res.status(500).send({
-                message: error.message
+                mensagem: error.message
             })
         }
 
     }
     ///////////////////////////
+
+
+    
 }
 export default new ControllerAtendimento()

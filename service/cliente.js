@@ -1,4 +1,8 @@
+import jwt from 'jsonwebtoken'
 import RepositoryCliente from '../repository/cliente.js'
+import bcrypt from 'bcrypt'
+
+const segredo = 's3gr3d0'
 
 class ServiceCliente {
 
@@ -46,17 +50,17 @@ class ServiceCliente {
         return cliente
     }
 
-    async Login(nome,email,senha) {
-        if(!nome || !email || !senha) {
-            throw new Error("Algo invalido")
+    async Login(email,senha) {
+        if(!email || !senha) {
+            throw new Error(" email ou senha invalida")
         }
         const cliente = await RepositoryCliente.FindByEmail(email)
 
         if(!cliente) {
-            throw new Error("Algo inválido")
+            throw new Error("Algo inválidoo")
         }
         if(
-            !(await bcrypt.compare(String(senha),cliente.senha))
+            !await bcrypt.compare(String(senha),cliente.senha)
         ) {
             throw new Error("Algo inválido")
         }
